@@ -24,6 +24,3 @@ std::vector<std::string> QLParser::tokenizer(const std::string& s) {
     return tokensOfCommand(upper);
 }
 
-std::string QLParser::getUpper(const std::string& command) {
-    return toUpperCase(command);
-}
