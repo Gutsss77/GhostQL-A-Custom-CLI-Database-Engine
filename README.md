@@ -19,6 +19,7 @@ All user-created databases are stored as separate folders inside the Databases d
 
 ### 2. Creating Tables
 GhostQL uses a simpe meachism of creating schemas defination in a metadata folder for users database.
+I will going to JSON for metadata handling and table data.
 Struture defined as:
 ```bash
 Databases
@@ -28,3 +29,5 @@ Databases
       └── data/               ← actual table data
           └── table_name.data
 ```
+Using a new header file to handle json for metadata, included **json.hpp** in the libs folder. 
+You can found that library officially at **https://github.com/nlohmann/json/releases** 
