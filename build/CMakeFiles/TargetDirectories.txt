@@ -1,3 +1,3 @@
-/Users/anshsharma/Desktop/develop/c&c++/database/build/CMakeFiles/GhostQL.dir
-/Users/anshsharma/Desktop/develop/c&c++/database/build/CMakeFiles/edit_cache.dir
-/Users/anshsharma/Desktop/develop/c&c++/database/build/CMakeFiles/rebuild_cache.dir
+/Users/anshsharma/Desktop/develop/c&c++/GhostQL/build/CMakeFiles/GhostQL.dir
+/Users/anshsharma/Desktop/develop/c&c++/GhostQL/build/CMakeFiles/edit_cache.dir
+/Users/anshsharma/Desktop/develop/c&c++/GhostQL/build/CMakeFiles/rebuild_cache.dir

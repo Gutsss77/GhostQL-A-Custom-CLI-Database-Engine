@@ -8,9 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/anshsharma/Desktop/develop/c&c++/database/main.cpp" "CMakeFiles/GhostQL.dir/main.cpp.o" "gcc" "CMakeFiles/GhostQL.dir/main.cpp.o.d"
-  "/Users/anshsharma/Desktop/develop/c&c++/database/src/QLParser.cpp" "CMakeFiles/GhostQL.dir/src/QLParser.cpp.o" "gcc" "CMakeFiles/GhostQL.dir/src/QLParser.cpp.o.d"
-  "/Users/anshsharma/Desktop/develop/c&c++/database/src/cli-for-users.cpp" "CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.o" "gcc" "CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.o.d"
+  "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/main.cpp" "CMakeFiles/GhostQL.dir/main.cpp.o" "gcc" "CMakeFiles/GhostQL.dir/main.cpp.o.d"
+  "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/src/QLParser.cpp" "CMakeFiles/GhostQL.dir/src/QLParser.cpp.o" "gcc" "CMakeFiles/GhostQL.dir/src/QLParser.cpp.o.d"
+  "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/src/database.cpp" "CMakeFiles/GhostQL.dir/src/database.cpp.o" "gcc" "CMakeFiles/GhostQL.dir/src/database.cpp.o.d"
+  "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/src/processCommand.cpp" "CMakeFiles/GhostQL.dir/src/processCommand.cpp.o" "gcc" "CMakeFiles/GhostQL.dir/src/processCommand.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

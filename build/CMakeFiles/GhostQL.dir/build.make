@@ -53,10 +53,10 @@ RM = /usr/local/Cellar/cmake/3.30.5/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/anshsharma/Desktop/develop/c&c++/database"
+CMAKE_SOURCE_DIR = "/Users/anshsharma/Desktop/develop/c&c++/GhostQL"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/anshsharma/Desktop/develop/c&c++/database/build"
+CMAKE_BINARY_DIR = "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/GhostQL.dir/depend.make
@@ -70,62 +70,78 @@ include CMakeFiles/GhostQL.dir/progress.make
 include CMakeFiles/GhostQL.dir/flags.make
 
 CMakeFiles/GhostQL.dir/main.cpp.o: CMakeFiles/GhostQL.dir/flags.make
-CMakeFiles/GhostQL.dir/main.cpp.o: /Users/anshsharma/Desktop/develop/c&c++/database/main.cpp
+CMakeFiles/GhostQL.dir/main.cpp.o: /Users/anshsharma/Desktop/develop/c&c++/GhostQL/main.cpp
 CMakeFiles/GhostQL.dir/main.cpp.o: CMakeFiles/GhostQL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/anshsharma/Desktop/develop/c&c++/database/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/GhostQL.dir/main.cpp.o"
-	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GhostQL.dir/main.cpp.o -MF CMakeFiles/GhostQL.dir/main.cpp.o.d -o CMakeFiles/GhostQL.dir/main.cpp.o -c "/Users/anshsharma/Desktop/develop/c&c++/database/main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/anshsharma/Desktop/develop/c&c++/GhostQL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/GhostQL.dir/main.cpp.o"
+	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GhostQL.dir/main.cpp.o -MF CMakeFiles/GhostQL.dir/main.cpp.o.d -o CMakeFiles/GhostQL.dir/main.cpp.o -c "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/main.cpp"
 
 CMakeFiles/GhostQL.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GhostQL.dir/main.cpp.i"
-	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/anshsharma/Desktop/develop/c&c++/database/main.cpp" > CMakeFiles/GhostQL.dir/main.cpp.i
+	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/main.cpp" > CMakeFiles/GhostQL.dir/main.cpp.i
 
 CMakeFiles/GhostQL.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GhostQL.dir/main.cpp.s"
-	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/anshsharma/Desktop/develop/c&c++/database/main.cpp" -o CMakeFiles/GhostQL.dir/main.cpp.s
+	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/main.cpp" -o CMakeFiles/GhostQL.dir/main.cpp.s
 
 CMakeFiles/GhostQL.dir/src/QLParser.cpp.o: CMakeFiles/GhostQL.dir/flags.make
-CMakeFiles/GhostQL.dir/src/QLParser.cpp.o: /Users/anshsharma/Desktop/develop/c&c++/database/src/QLParser.cpp
+CMakeFiles/GhostQL.dir/src/QLParser.cpp.o: /Users/anshsharma/Desktop/develop/c&c++/GhostQL/src/QLParser.cpp
 CMakeFiles/GhostQL.dir/src/QLParser.cpp.o: CMakeFiles/GhostQL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/anshsharma/Desktop/develop/c&c++/database/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/GhostQL.dir/src/QLParser.cpp.o"
-	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GhostQL.dir/src/QLParser.cpp.o -MF CMakeFiles/GhostQL.dir/src/QLParser.cpp.o.d -o CMakeFiles/GhostQL.dir/src/QLParser.cpp.o -c "/Users/anshsharma/Desktop/develop/c&c++/database/src/QLParser.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/anshsharma/Desktop/develop/c&c++/GhostQL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/GhostQL.dir/src/QLParser.cpp.o"
+	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GhostQL.dir/src/QLParser.cpp.o -MF CMakeFiles/GhostQL.dir/src/QLParser.cpp.o.d -o CMakeFiles/GhostQL.dir/src/QLParser.cpp.o -c "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/src/QLParser.cpp"
 
 CMakeFiles/GhostQL.dir/src/QLParser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GhostQL.dir/src/QLParser.cpp.i"
-	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/anshsharma/Desktop/develop/c&c++/database/src/QLParser.cpp" > CMakeFiles/GhostQL.dir/src/QLParser.cpp.i
+	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/src/QLParser.cpp" > CMakeFiles/GhostQL.dir/src/QLParser.cpp.i
 
 CMakeFiles/GhostQL.dir/src/QLParser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GhostQL.dir/src/QLParser.cpp.s"
-	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/anshsharma/Desktop/develop/c&c++/database/src/QLParser.cpp" -o CMakeFiles/GhostQL.dir/src/QLParser.cpp.s
+	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/src/QLParser.cpp" -o CMakeFiles/GhostQL.dir/src/QLParser.cpp.s
 
-CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.o: CMakeFiles/GhostQL.dir/flags.make
-CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.o: /Users/anshsharma/Desktop/develop/c&c++/database/src/cli-for-users.cpp
-CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.o: CMakeFiles/GhostQL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/anshsharma/Desktop/develop/c&c++/database/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.o"
-	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.o -MF CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.o.d -o CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.o -c "/Users/anshsharma/Desktop/develop/c&c++/database/src/cli-for-users.cpp"
+CMakeFiles/GhostQL.dir/src/processCommand.cpp.o: CMakeFiles/GhostQL.dir/flags.make
+CMakeFiles/GhostQL.dir/src/processCommand.cpp.o: /Users/anshsharma/Desktop/develop/c&c++/GhostQL/src/processCommand.cpp
+CMakeFiles/GhostQL.dir/src/processCommand.cpp.o: CMakeFiles/GhostQL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/anshsharma/Desktop/develop/c&c++/GhostQL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/GhostQL.dir/src/processCommand.cpp.o"
+	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GhostQL.dir/src/processCommand.cpp.o -MF CMakeFiles/GhostQL.dir/src/processCommand.cpp.o.d -o CMakeFiles/GhostQL.dir/src/processCommand.cpp.o -c "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/src/processCommand.cpp"
 
-CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.i"
-	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/anshsharma/Desktop/develop/c&c++/database/src/cli-for-users.cpp" > CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.i
+CMakeFiles/GhostQL.dir/src/processCommand.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GhostQL.dir/src/processCommand.cpp.i"
+	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/src/processCommand.cpp" > CMakeFiles/GhostQL.dir/src/processCommand.cpp.i
 
-CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.s"
-	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/anshsharma/Desktop/develop/c&c++/database/src/cli-for-users.cpp" -o CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.s
+CMakeFiles/GhostQL.dir/src/processCommand.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GhostQL.dir/src/processCommand.cpp.s"
+	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/src/processCommand.cpp" -o CMakeFiles/GhostQL.dir/src/processCommand.cpp.s
+
+CMakeFiles/GhostQL.dir/src/database.cpp.o: CMakeFiles/GhostQL.dir/flags.make
+CMakeFiles/GhostQL.dir/src/database.cpp.o: /Users/anshsharma/Desktop/develop/c&c++/GhostQL/src/database.cpp
+CMakeFiles/GhostQL.dir/src/database.cpp.o: CMakeFiles/GhostQL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/anshsharma/Desktop/develop/c&c++/GhostQL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/GhostQL.dir/src/database.cpp.o"
+	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GhostQL.dir/src/database.cpp.o -MF CMakeFiles/GhostQL.dir/src/database.cpp.o.d -o CMakeFiles/GhostQL.dir/src/database.cpp.o -c "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/src/database.cpp"
+
+CMakeFiles/GhostQL.dir/src/database.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GhostQL.dir/src/database.cpp.i"
+	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/src/database.cpp" > CMakeFiles/GhostQL.dir/src/database.cpp.i
+
+CMakeFiles/GhostQL.dir/src/database.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GhostQL.dir/src/database.cpp.s"
+	/opt/homebrew/opt/llvm/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/src/database.cpp" -o CMakeFiles/GhostQL.dir/src/database.cpp.s
 
 # Object files for target GhostQL
 GhostQL_OBJECTS = \
 "CMakeFiles/GhostQL.dir/main.cpp.o" \
 "CMakeFiles/GhostQL.dir/src/QLParser.cpp.o" \
-"CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.o"
+"CMakeFiles/GhostQL.dir/src/processCommand.cpp.o" \
+"CMakeFiles/GhostQL.dir/src/database.cpp.o"
 
 # External object files for target GhostQL
 GhostQL_EXTERNAL_OBJECTS =
 
 GhostQL: CMakeFiles/GhostQL.dir/main.cpp.o
 GhostQL: CMakeFiles/GhostQL.dir/src/QLParser.cpp.o
-GhostQL: CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.o
+GhostQL: CMakeFiles/GhostQL.dir/src/processCommand.cpp.o
+GhostQL: CMakeFiles/GhostQL.dir/src/database.cpp.o
 GhostQL: CMakeFiles/GhostQL.dir/build.make
 GhostQL: CMakeFiles/GhostQL.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/anshsharma/Desktop/develop/c&c++/database/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable GhostQL"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/anshsharma/Desktop/develop/c&c++/GhostQL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable GhostQL"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GhostQL.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -137,6 +153,6 @@ CMakeFiles/GhostQL.dir/clean:
 .PHONY : CMakeFiles/GhostQL.dir/clean
 
 CMakeFiles/GhostQL.dir/depend:
-	cd "/Users/anshsharma/Desktop/develop/c&c++/database/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/anshsharma/Desktop/develop/c&c++/database" "/Users/anshsharma/Desktop/develop/c&c++/database" "/Users/anshsharma/Desktop/develop/c&c++/database/build" "/Users/anshsharma/Desktop/develop/c&c++/database/build" "/Users/anshsharma/Desktop/develop/c&c++/database/build/CMakeFiles/GhostQL.dir/DependInfo.cmake" "--color=$(COLOR)"
+	cd "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/anshsharma/Desktop/develop/c&c++/GhostQL" "/Users/anshsharma/Desktop/develop/c&c++/GhostQL" "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/build" "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/build" "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/build/CMakeFiles/GhostQL.dir/DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : CMakeFiles/GhostQL.dir/depend
 

@@ -57,10 +57,10 @@ RM = /usr/local/Cellar/cmake/3.30.5/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/anshsharma/Desktop/develop/c&c++/database"
+CMAKE_SOURCE_DIR = "/Users/anshsharma/Desktop/develop/c&c++/GhostQL"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/anshsharma/Desktop/develop/c&c++/database/build"
+CMAKE_BINARY_DIR = "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/anshsharma/Desktop/develop/c&c++/database/build/CMakeFiles" "/Users/anshsharma/Desktop/develop/c&c++/database/build//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/build/CMakeFiles" "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/build//CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/anshsharma/Desktop/develop/c&c++/database/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/anshsharma/Desktop/develop/c&c++/GhostQL/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -177,29 +177,53 @@ src/QLParser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GhostQL.dir/build.make CMakeFiles/GhostQL.dir/src/QLParser.cpp.s
 .PHONY : src/QLParser.cpp.s
 
-src/cli-for-users.o: src/cli-for-users.cpp.o
-.PHONY : src/cli-for-users.o
+src/database.o: src/database.cpp.o
+.PHONY : src/database.o
 
 # target to build an object file
-src/cli-for-users.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/GhostQL.dir/build.make CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.o
-.PHONY : src/cli-for-users.cpp.o
+src/database.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GhostQL.dir/build.make CMakeFiles/GhostQL.dir/src/database.cpp.o
+.PHONY : src/database.cpp.o
 
-src/cli-for-users.i: src/cli-for-users.cpp.i
-.PHONY : src/cli-for-users.i
+src/database.i: src/database.cpp.i
+.PHONY : src/database.i
 
 # target to preprocess a source file
-src/cli-for-users.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/GhostQL.dir/build.make CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.i
-.PHONY : src/cli-for-users.cpp.i
+src/database.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GhostQL.dir/build.make CMakeFiles/GhostQL.dir/src/database.cpp.i
+.PHONY : src/database.cpp.i
 
-src/cli-for-users.s: src/cli-for-users.cpp.s
-.PHONY : src/cli-for-users.s
+src/database.s: src/database.cpp.s
+.PHONY : src/database.s
 
 # target to generate assembly for a file
-src/cli-for-users.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/GhostQL.dir/build.make CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.s
-.PHONY : src/cli-for-users.cpp.s
+src/database.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GhostQL.dir/build.make CMakeFiles/GhostQL.dir/src/database.cpp.s
+.PHONY : src/database.cpp.s
+
+src/processCommand.o: src/processCommand.cpp.o
+.PHONY : src/processCommand.o
+
+# target to build an object file
+src/processCommand.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GhostQL.dir/build.make CMakeFiles/GhostQL.dir/src/processCommand.cpp.o
+.PHONY : src/processCommand.cpp.o
+
+src/processCommand.i: src/processCommand.cpp.i
+.PHONY : src/processCommand.i
+
+# target to preprocess a source file
+src/processCommand.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GhostQL.dir/build.make CMakeFiles/GhostQL.dir/src/processCommand.cpp.i
+.PHONY : src/processCommand.cpp.i
+
+src/processCommand.s: src/processCommand.cpp.s
+.PHONY : src/processCommand.s
+
+# target to generate assembly for a file
+src/processCommand.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GhostQL.dir/build.make CMakeFiles/GhostQL.dir/src/processCommand.cpp.s
+.PHONY : src/processCommand.cpp.s
 
 # Help Target
 help:
@@ -216,9 +240,12 @@ help:
 	@echo "... src/QLParser.o"
 	@echo "... src/QLParser.i"
 	@echo "... src/QLParser.s"
-	@echo "... src/cli-for-users.o"
-	@echo "... src/cli-for-users.i"
-	@echo "... src/cli-for-users.s"
+	@echo "... src/database.o"
+	@echo "... src/database.i"
+	@echo "... src/database.s"
+	@echo "... src/processCommand.o"
+	@echo "... src/processCommand.i"
+	@echo "... src/processCommand.s"
 .PHONY : help
 
 

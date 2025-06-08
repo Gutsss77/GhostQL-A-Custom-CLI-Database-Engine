@@ -3,8 +3,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/GhostQL.dir/main.cpp.o.d"
   "CMakeFiles/GhostQL.dir/src/QLParser.cpp.o"
   "CMakeFiles/GhostQL.dir/src/QLParser.cpp.o.d"
-  "CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.o"
-  "CMakeFiles/GhostQL.dir/src/cli-for-users.cpp.o.d"
+  "CMakeFiles/GhostQL.dir/src/database.cpp.o"
+  "CMakeFiles/GhostQL.dir/src/database.cpp.o.d"
+  "CMakeFiles/GhostQL.dir/src/processCommand.cpp.o"
+  "CMakeFiles/GhostQL.dir/src/processCommand.cpp.o.d"
   "GhostQL"
   "GhostQL.pdb"
 )

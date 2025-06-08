@@ -1,6 +1,7 @@
-CMakeFiles/GhostQL.dir/src/QLParser.cpp.o: \
-  /Users/anshsharma/Desktop/develop/c&c++/GhostQL/src/QLParser.cpp \
-  /Users/anshsharma/Desktop/develop/c&c++/GhostQL/include/QLParser.hpp \
+CMakeFiles/GhostQL.dir/src/processCommand.cpp.o: \
+  /Users/anshsharma/Desktop/develop/c&c++/GhostQL/src/processCommand.cpp \
+  /Users/anshsharma/Desktop/develop/c&c++/GhostQL/include/processCommand.hpp \
+  /Users/anshsharma/Desktop/develop/c&c++/GhostQL/include/session.hpp \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/string \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__algorithm/max.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__algorithm/comp.h \
@@ -659,36 +660,28 @@ CMakeFiles/GhostQL.dir/src/QLParser.cpp.o: \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__algorithm/pstl.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__algorithm/sample.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/bit \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/vector \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__vector/comparison.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__algorithm/lexicographical_compare_three_way.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__algorithm/three_way_comp_ref_type.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__fwd/vector.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__vector/swap.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__vector/vector.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__algorithm/ranges_copy_n.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__algorithm/in_out_result.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__algorithm/ranges_copy.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__iterator/unreachable_sentinel.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__memory/temp_value.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__split_buffer \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__vector/container_traits.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__type_traits/container_traits.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__vector/vector_bool.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__bit_reference \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__vector/pmr.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/array \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__iterator/static_bounded_iter.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/cerrno \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/clocale \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/locale.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_locale.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_locale_t.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/locale \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/filesystem \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/copy_options.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/directory_entry.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/file_status.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/file_type.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/perms.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/file_time_type.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__chrono/file_clock.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/filesystem_error.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/path.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/iomanip \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__ostream/put_character_sequence.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__locale_dir/pad_and_output.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/ios \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__locale \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__locale_dir/locale_base_api.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__locale_dir/support/apple.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__locale_dir/support/bsd_like.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/clocale \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/locale.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_locale.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_locale_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_xlocale.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/__xlocale.h \
@@ -703,11 +696,10 @@ CMakeFiles/GhostQL.dir/src/QLParser.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/xlocale/_wctype.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__mutex/once_flag.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__utility/no_destroy.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__locale_dir/pad_and_output.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/ios \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__system_error/error_category.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__system_error/error_code.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__system_error/errc.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/cerrno \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__system_error/error_condition.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__system_error/system_error.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/mutex \
@@ -719,6 +711,7 @@ CMakeFiles/GhostQL.dir/src/QLParser.cpp.o: \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__mutex/lock_guard.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__thread/id.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/system_error \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/locale \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/streambuf \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/nl_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/types.h \
@@ -748,24 +741,18 @@ CMakeFiles/GhostQL.dir/src/QLParser.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_fsfilcnt_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types/_nl_item.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/cstdarg \
-  /Users/anshsharma/Desktop/develop/c&c++/GhostQL/include/database.hpp \
-  /Users/anshsharma/Desktop/develop/c&c++/GhostQL/include/session.hpp \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/filesystem \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/copy_options.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/directory_entry.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/file_status.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/file_type.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/perms.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/file_time_type.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__chrono/file_clock.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/filesystem_error.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/path.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/iomanip \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__ostream/put_character_sequence.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/array \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__algorithm/lexicographical_compare_three_way.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__algorithm/three_way_comp_ref_type.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__iterator/static_bounded_iter.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/bitset \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__bit_reference \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__type_traits/is_char_like_type.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/deque \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__fwd/deque.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__memory/temp_value.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__split_buffer \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__type_traits/container_traits.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/functional \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__functional/binary_negate.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__functional/bind.h \
@@ -779,6 +766,15 @@ CMakeFiles/GhostQL.dir/src/QLParser.cpp.o: \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__functional/function.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__type_traits/strip_signature.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__functional/boyer_moore_searcher.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__vector/vector.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__algorithm/ranges_copy_n.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__algorithm/in_out_result.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__algorithm/ranges_copy.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__iterator/unreachable_sentinel.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__fwd/vector.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__vector/comparison.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__vector/container_traits.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__vector/swap.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/unordered_map \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__functional/is_transparent.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__hash_table \
@@ -790,6 +786,9 @@ CMakeFiles/GhostQL.dir/src/QLParser.cpp.o: \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__functional/default_searcher.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__functional/not_fn.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__functional/perfect_forward.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/vector \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__vector/vector_bool.h \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__vector/pmr.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/format \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/queue \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__fwd/queue.h \
@@ -808,31 +807,6 @@ CMakeFiles/GhostQL.dir/src/QLParser.cpp.o: \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/path_iterator.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/recursive_directory_iterator.h \
   /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__filesystem/u8path.h \
-  /Users/anshsharma/Desktop/develop/c&c++/GhostQL/libs/json.hpp \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/forward_list \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/map \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__tree \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/valarray \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/cassert \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/assert.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_assert.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_static_assert.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/numeric \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__numeric/accumulate.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__numeric/adjacent_difference.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__numeric/inner_product.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__numeric/iota.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__numeric/exclusive_scan.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__numeric/gcd_lcm.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__numeric/inclusive_scan.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__numeric/pstl.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__numeric/reduce.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__numeric/transform_exclusive_scan.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__numeric/transform_inclusive_scan.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__numeric/transform_reduce.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/execution \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/__type_traits/is_execution_policy.h \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/any \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/chrono \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/iostream \
-  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/sstream
+  /Users/anshsharma/Desktop/develop/c&c++/GhostQL/include/database.hpp \
+  /Users/anshsharma/Desktop/develop/c&c++/GhostQL/include/QLParser.hpp \
+  /opt/homebrew/Cellar/llvm/20.1.3/bin/../include/c++/v1/iostream
