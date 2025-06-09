@@ -42,7 +42,7 @@ void processCommand(SessionContext& ctx, std::vector<std::string>& tokens) {
             std::cerr << "Invalid USE command. Usage: USE <database>\n";
             return;
         }
-        db.useDatabase(ctx, const_cast<std::vector<std::string>&>(tokens));
+        db.useDatabase(ctx, tokens);
         return;
     }
 
@@ -59,6 +59,9 @@ void processCommand(SessionContext& ctx, std::vector<std::string>& tokens) {
             return;
         } else if (commandFunction == "TABLE") {
             db.createTable(ctx, tokens);
+            return;
+        } else{
+            std::cerr << "Invalid command.\n";
             return;
         }
     }
