@@ -6,7 +6,7 @@
 #include <sstream>
 #include <cctype>
 
-using json = nlohmann::json;
+using json = nlohmann::ordered_json;
 
 //convert the command to uppaercase
 std::string QLParser::toUpperCase(const std::string& command) {
@@ -33,17 +33,12 @@ std::vector<std::string> QLParser::tokenizer(const std::string& s) {
 }
 
 //creates meta data folder in users table for defining schemas
-void extractMetadataForTable(std::vector<std::string>& tokens, const std::string& dbName){
-    if(tokens.size() < 5){
-        std::cerr << "Invalid Command! too Short.\n";
-        return;
-    }
-    std::string tableName = tokens[2]; //table name
-
-    //for finding the first open and first closing bracket tok extract the meta data db tables
+json extractMetadataForTable(std::vector<std::string>& tokens){
+    std::string tableName = tokens[2];
     int n = tokens.size();
     int start = 0;
     int end = 0;
+
     for(int i = 0; i < n; i++){
         if(tokens[i] == "("){
             start = i;
@@ -53,5 +48,18 @@ void extractMetadataForTable(std::vector<std::string>& tokens, const std::string
             break;
         }
     }
+
+    json schema;
+    schema["tableName"] = tableName;
+    schema["metaData"] = json::array();
+
+    for(int i = start + 1; i < end; i += 3){
+        schema["metaData"].push_back({ 
+            {"column_name", tokens[i]}, 
+            {"type", tokens[i + 1]}
+        });
+    }
+
+    return schema;
 
 }
