@@ -17,7 +17,7 @@ public:
     std::vector<std::string> tokenizer(const std::string& s);
 
     //creates meta data folder in users table for defining schemas
-    void extractMetadataForTable(std::vector<std::string>& tokens);
+    json extractMetadataForTable(std::vector<std::string>& tokens);
 };
 
 #endif // QLPARSER_H
