@@ -1,0 +1,24 @@
+# Ignore build folder
+/build/
+
+# Ignore the testing databases folder
+/databases/
+
+# Ignore compiled object files
+*.o
+
+# Ignore executable files (adjust if your executable has a different extension)
+*.exe
+*.out
+
+# Ignore CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Ignore log files
+*.log
+
+# Ignore editor swap files
+*.swp
