@@ -7,30 +7,32 @@ A custom CLI database inspired by the MySQL command-line interface!
 ## Database Functions
 
 ### 1. Creating a Database
-GhostQL uses a simple folder-based mechanism to represent databases because it is easy to understand and implement.
+GhostQL uses a simple folder-based mechanism to represent databases, making it easy to understand and implement.
 
-Use the command to create database:
+To create a database, use the following command:
 ```bash
 CREATE DATABASE <name>
 ```
-Create a folder named Databases if it does not exist (Note : Folder creates in **root** directory).
-Inside the Databases folder, it will create a new folder with the specified database name <name>.
-All user-created databases are stored as separate folders inside the Databases directory, each named according to the user’s input.
+-- This command will first ensure that a Databases directory exists in the root directory.
+-- Inside the Databases folder, it will create a new subfolder with the specified database name <name>.
+-- Each user-created database is stored as a separate folder inside the Databases directory.
 
 ### 2. Use Command
-As in MySQL the **USE** command makes a database active for performing operations, just like that the use command do the same thing.
-
-Using the **USE** command:
+Just like MySQL, GhostQL provides a USE command to set the current working database.
 ```bash
 USE <databaseName>
 ```
-Use this command to set a database active for performing operation on it.
-It uses SessionContext to manage active Database and root directory for it.
+-- This command sets the specified database as the active one for subsequent operations.
+-- It uses SessionContext to manage the active database and its root directory.
 
 ### 3. Creating Tables
-GhostQL uses a simpe meachism of creating schemas defination in a metadata folder for users database.
-I will going to use JSON for metadata handling and table data.
-Struture defined as:
+GhostQL uses a straightforward approach for schema and data handling:
+
+-- Table schemas are stored as .meta files in a metadata/ folder.
+-- Table data is stored as .data files in a data/ folder.
+-- Both folders reside within the selected database directory.
+
+Directory structure:
 ```bash
 Databases
   └── user/                   ← database folder
@@ -39,13 +41,18 @@ Databases
       └── data/               ← actual table data
           └── table_name.data
 ```
-Using a new header file to handle json for metadata, included **json.hpp** in the libs folder. 
-You can found that library officially at **https://github.com/nlohmann/json/releases** 
+-- JSON is used for storing both metadata and table data.
+-- A header file (json.hpp) is used for JSON handling.
+-- You can find the library at:
+    **https://github.com/nlohmann/json/releases**
 
 ### 4. Show Command
-Similar to MySQL **Show** command, show command can be used with eithet database or table to check existing databases or tables.
-Using the **SHOW** command:
+GhostQL includes a SHOW command, similar to MySQL, for listing databases or tables.
+Usage:
 ```bash
-SHOW DATABASES or SHOW TABLES
+SHOW DATABASES
+SHOW TABLES
 ```
-Futher more will be updated soon.
+-- SHOW DATABASES lists all databases in the root Databases/ directory.
+-- SHOW TABLES lists all tables in the active database.
+More features and commands will be added soon!
