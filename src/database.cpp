@@ -15,7 +15,7 @@ using json = nlohmann::ordered_json;
 //creates a folder for users database
 void Database::createDatabase(SessionContext& ctx, std::vector<std::string>& tokens) {
     if(tokens.size() < 3){
-        std::cerr << "Invalid Command!" << "\n";
+        std::cerr << " ERROR : Invalid Command!" << "\n";
         return;
     }
     fs::path databasesDir = ctx.rootPath / storageName;
@@ -27,20 +27,42 @@ void Database::createDatabase(SessionContext& ctx, std::vector<std::string>& tok
         }
 
         if (fs::exists(dbName)) {
-            std::cerr << "Database already exists: " << dbName << "\n";
+            std::cerr << " ERROR : Can't create database '" << dbName << "' database exists\n";
         } else {
             fs::create_directory(dbName);
-            std::cout << "Database '" << tokens[2] << "' created successfully.\n";
+            std::cout << " Query OK, Database '" << tokens[2] << "' created successfully.\n";
         }
     } catch (const fs::filesystem_error& e) {
-        std::cerr << "Filesystem error: " << e.what() << "\n";
+        std::cerr << " Filesystem error: " << e.what() << "\n";
     }
+}
+
+void Database::showDatabases(SessionContext& ctx, std::vector<std::string>& tokens){
+    if(tokens.size() < 2){
+        std::cerr << " ERROR : Invalid Command.\n";
+        return;
+    }
+    std::cout << " Databases : \n\n";
+    fs::path db = ctx.rootPath / storageName;
+    if(!fs::exists(db)){
+        std::cerr << " ERROR : No database found.\n";
+        return;
+    }
+    int row = 0;
+    for(const auto& dir : fs::directory_iterator(db)){
+        if(dir.is_directory()){
+            std::cout << " - " << dir.path().filename().string() << "\n";
+            row++;
+        }
+    }
+    std::cout << row << " rows in set." << "\n";
 }
 
 //set an active database for perfroming tasks
 void Database::useDatabase(SessionContext& ctx, std::vector<std::string>& tokens){
     if(tokens.size() != 2){
-        std::cerr << "Invalid Command.\n";
+        std::cerr << " ERROR : Invalid Command.\n";
+        return;
     }
     std::string db = tokens[1];
     fs::path dbName = ctx.rootPath/ storageName / db;
@@ -48,21 +70,21 @@ void Database::useDatabase(SessionContext& ctx, std::vector<std::string>& tokens
     try{
         if(fs::exists(dbName)){
             ctx.activeDatabase = db;
-            std::cout << "Activated database " << db << ".\n";
+            std::cout << " Database changed.\n";
             return;
         }else{
-            std::cerr << "Database does not exist.\n";
+            std::cerr << " ERROR : Database does not exist.\n";
             return;
         }
     }catch(const fs::filesystem_error& e){
-        std::cerr << "Filesystem error: " << e.what() << "\n";
+        std::cerr << " Filesystem error: " << e.what() << "\n";
     }
 }
 
 //creates a folder for table schema inside active database the structure is already defined (check readme.md 2. Create tables)
 void Database::createTable(SessionContext& ctx, std::vector<std::string>& tokens){
     if(ctx.activeDatabase == ""){
-        std::cout << "No database is selected for use.\n";
+        std::cout << " ERROR : No database is selected for performing operations.\n";
         return;
     }
     std::string db = ctx.activeDatabase;
@@ -79,16 +101,29 @@ void Database::createTable(SessionContext& ctx, std::vector<std::string>& tokens
     json schema = qlp.extractMetadataForTable(tokens);
 
     std::string tableName = schema["tableName"];
-    fs::path metaFile = tableName + ".meta";
-    fs::path dataFile = dataPath / ".data";
+    fs::path metaFile = metadataPath / (tableName + ".meta");
+    fs::path dataFile = dataPath / (tableName + ".data");
 
     if(fs::exists(metaFile)){
-        std::cout << "Table '" << tableName << "' already exists.\n";
+        std::cout << " ERROR : Table '" << tableName << "' already exists.\n";
         return;
     }
 
-    try{
+    try {
+    // Place the JSON into tableName.meta
+    std::ofstream outMeta(metaFile);
+    outMeta << schema.dump(4);
+    outMeta.close();
 
-    }catch()
+    // Place an empty data array into tableName.data
+    std::ofstream outData(dataFile);
+    outData << "[]";
+    outData.close();
+
+    } catch (const std::exception& e) {
+        std::cerr << " Error writing table files: " << e.what() << std::endl;
+    }
+
+    std::cout << " Table '" << tableName << "' created successfully.\n";
 
 }
