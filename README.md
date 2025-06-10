@@ -17,7 +17,7 @@ Create a folder named Databases if it does not exist (Note : Folder creates in *
 Inside the Databases folder, it will create a new folder with the specified database name <name>.
 All user-created databases are stored as separate folders inside the Databases directory, each named according to the user’s input.
 
-### 3. Use Command
+### 2. Use Command
 As in MySQL the **USE** command makes a database active for performing operations, just like that the use command do the same thing.
 
 Using the **USE** command:
@@ -27,7 +27,7 @@ USE <databaseName>
 Use this command to set a database active for performing operation on it.
 It uses SessionContext to manage active Database and root directory for it.
 
-### 2. Creating Tables
+### 3. Creating Tables
 GhostQL uses a simpe meachism of creating schemas defination in a metadata folder for users database.
 I will going to use JSON for metadata handling and table data.
 Struture defined as:
@@ -41,3 +41,11 @@ Databases
 ```
 Using a new header file to handle json for metadata, included **json.hpp** in the libs folder. 
 You can found that library officially at **https://github.com/nlohmann/json/releases** 
+
+### 4. Show Command
+Similar to MySQL **Show** command, show command can be used with eithet database or table to check existing databases or tables.
+Using the **SHOW** command:
+```bash
+SHOW DATABASES or SHOW TABLES
+```
+Futher more will be updated soon.
