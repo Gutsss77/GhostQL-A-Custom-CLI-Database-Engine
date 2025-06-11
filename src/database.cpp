@@ -37,25 +37,59 @@ void Database::createDatabase(SessionContext& ctx, std::vector<std::string>& tok
     }
 }
 
+//Shows all the databases created by user's
 void Database::showDatabases(SessionContext& ctx, std::vector<std::string>& tokens){
     if(tokens.size() < 2){
         std::cerr << " ERROR : Invalid Command.\n";
         return;
     }
-    std::cout << " Databases : \n\n";
     fs::path db = ctx.rootPath / storageName;
     if(!fs::exists(db)){
         std::cerr << " ERROR : No database found.\n";
         return;
     }
-    int row = 0;
-    for(const auto& dir : fs::directory_iterator(db)){
-        if(dir.is_directory()){
-            std::cout << " - " << dir.path().filename().string() << "\n";
-            row++;
+    try{
+        std::cout << " Databases : \n\n";
+        int row = 0;
+        for(const auto& dir : fs::directory_iterator(db)){
+            if(dir.is_directory()){
+                std::cout << " - " << dir.path().filename().string() << "\n";
+                row++;
+            }
         }
+        std::cout << row << "\n rows in set." << "\n";
+    }catch(const std::exception& e){
+        std::cerr << " ERROR : while traversing the directory. " << e.what() << "\n";
     }
-    std::cout << row << " rows in set." << "\n";
+}
+
+void Database::showTables(SessionContext& ctx, std::vector<std::string>& tokens){
+    if(tokens.size() < 2){
+        std::cerr << " ERROR : Invalid Command.\n";
+    }
+    if(ctx.activeDatabase == ""){
+        std::cerr << " ERROR : No database is selected.\n";
+        return;
+    }
+    fs::path db = ctx.rootPath / storageName / ctx.activeDatabase / "metadata";
+    if(!fs::exists(db)){
+        std::cerr << " ERROR : No database found.\n";
+        return;
+    }
+    try{
+        std::cout << " Tables in " << ctx.activeDatabase << "\n\n";
+        int row = 0;
+        for(const auto& dir : fs::directory_iterator(db)){
+            if(dir.is_regular_file() && dir.path().extension() == ".meta"){
+                std::cout << " - " << dir.path().filename().string() << "\n";
+                row++;
+            }
+        }
+        std::cout << row << "\n rows in set." << "\n";
+    }catch(const std::exception& e){
+        std::cerr << " ERROR : while traversing the directory. " << e.what() << "\n";
+    }
+
 }
 
 //set an active database for perfroming tasks
@@ -121,7 +155,7 @@ void Database::createTable(SessionContext& ctx, std::vector<std::string>& tokens
     outData.close();
 
     } catch (const std::exception& e) {
-        std::cerr << " Error writing table files: " << e.what() << std::endl;
+        std::cerr << " ERROR : writing table files: " << e.what() << std::endl;
     }
 
     std::cout << " Table '" << tableName << "' created successfully.\n";
