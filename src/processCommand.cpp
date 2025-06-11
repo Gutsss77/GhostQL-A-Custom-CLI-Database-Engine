@@ -12,7 +12,7 @@ QLParser qlp;
 
 // For exiting the program
 void exitProgram() {
-    std::cout << "Exiting GhostQL. Goodbye!\n";
+    std::cout << " Exiting GhostQL. Goodbye!\n";
     exit(0);
 }
 
@@ -26,7 +26,7 @@ void process(SessionContext& ctx, const std::string& input) {
 // Function to process parsed commands
 void processCommand(SessionContext& ctx, std::vector<std::string>& tokens) {
     if (tokens.empty()) {
-        std::cerr << "Empty command.\n";
+        std::cerr << " ERROR : Empty command.\n";
         return;
     }
 
@@ -39,7 +39,7 @@ void processCommand(SessionContext& ctx, std::vector<std::string>& tokens) {
 
     if (commandType == "USE") {
         if (tokens.size() < 2) {
-            std::cerr << "Invalid USE command. Usage: USE <database>\n";
+            std::cerr << " ERROR : Invalid USE command. Usage: USE <database>\n";
             return;
         }
         db.useDatabase(ctx, tokens);
@@ -48,7 +48,7 @@ void processCommand(SessionContext& ctx, std::vector<std::string>& tokens) {
 
     if (commandType == "CREATE") {
         if (tokens.size() < 3) {
-            std::cerr << "Invalid CREATE command. Usage: CREATE DATABASE|TABLE <name>\n";
+            std::cerr << " ERROR : Invalid CREATE command. Usage: CREATE DATABASE|TABLE <name>\n";
             return;
         }
 
@@ -61,10 +61,28 @@ void processCommand(SessionContext& ctx, std::vector<std::string>& tokens) {
             db.createTable(ctx, tokens);
             return;
         } else{
-            std::cerr << "Invalid command.\n";
+            std::cerr << " ERROR : Invalid command.\n";
             return;
         }
     }
 
-    std::cerr << "Unsupported or unknown command.\n";
+    if(commandType == "SHOW"){
+        if(tokens.size() < 2){
+            std::cerr << " ERROR : Invalid SHOW command. Usage: SHOW DATABASES | SHOW TABLES\n";
+            return;
+        }
+        std::string commandFunction = tokens[1];
+        if(commandFunction == "DATABASES"){
+            db.showDatabases(ctx, tokens);
+            return;
+        }else if(commandFunction == "TABLES"){
+            db.showTables(ctx, tokens);
+            return;
+        }else{
+            std::cerr << " ERROR : Invalid command.\n";
+            return;
+        }
+    }
+
+    std::cerr << " ERROR : Unsupported or unknown command.\n";
 }
