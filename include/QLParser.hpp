@@ -1,8 +1,11 @@
 #ifndef QLPARSER_H
 #define QLPARSER_H
 
+#include "json.hpp"
 #include <string>
 #include <vector>
+
+using json = nlohmann::ordered_json;
 
 class QLParser {
 private:
@@ -10,7 +13,7 @@ private:
     std::vector<std::string> tokensOfCommand(const std::string& command);
 
 public:
-    //convert the command to uppercase
+    //convert the string to uppercase
     std::string toUpperCase(const std::string& command);
 
     //return vector containing all uppercase tokens
