@@ -93,10 +93,11 @@ void processCommand(SessionContext& ctx, std::vector<std::string>& tokens) {
             return;
         }
         std::string commandFunction = qlp.toUpperCase(tokens[1]);
-        if(commandFunction == "TABLE"){
-            return;
-        }else if(tokens.size() == 2){
+        if(commandFunction == "DATABASE"){
             db.dropDatabase(ctx, tokens);
+            return;
+        }else if(commandFunction == "TABLE"){
+            return;
         }else{
             std::cerr << " ERROR : Invalid command.\n";
             return;
