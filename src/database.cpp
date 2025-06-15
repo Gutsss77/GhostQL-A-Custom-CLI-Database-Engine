@@ -92,6 +92,32 @@ void Database::showTables(SessionContext& ctx, std::vector<std::string>& tokens)
 
 }
 
+//deletes database 
+void Database::dropDatabase(SessionContext& ctx, std::vector<std::string>& tokens){
+    if (tokens.size() != 3) {
+        std::cerr << "ERROR: Invalid DROP DATABASE command. Usage: DROP <databasename>\n";
+        return;
+    }
+
+    std::string db = tokens[2];
+    fs::path dbName = ctx.rootPath / storageName / db;
+    try{
+        if(fs::exists(dbName)){
+            fs::remove_all(dbName);
+            std::cout << " Database " << db << " dropped successfully.\n";
+
+            //if the db was in use
+            if(ctx.activeDatabase != ""){
+                ctx.activeDatabase = "";
+            }
+        }else{
+            std::cout << " Database " << db << " does not exist.\n"; 
+        }
+    }catch(const fs::filesystem_error& e){
+        std::cerr << " Filesystem error: " << e.what() << "\n"; 
+    }
+}
+
 //set an active database for perfroming tasks
 void Database::useDatabase(SessionContext& ctx, std::vector<std::string>& tokens){
     if(tokens.size() != 2){
