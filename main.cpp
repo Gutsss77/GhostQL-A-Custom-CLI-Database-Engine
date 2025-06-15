@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-// Initialize session context with the root directory
+//session context with the root directory
 SessionContext ctx(SOURCE_DIR);
 
 int main() {
@@ -14,7 +14,7 @@ int main() {
               << "Type 'EXIT' to quit.\n" << std::endl;
 
     while (true) {
-        std::cout << "GhostQL>> ";
+        std::cout << "[GhostQL>  ";
         std::getline(std::cin, input);
         if (!input.empty()) {
             process(ctx, input);
