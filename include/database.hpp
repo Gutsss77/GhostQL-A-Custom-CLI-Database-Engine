@@ -12,6 +12,7 @@ public:
     void showTables(SessionContext& ctx, std::vector<std::string>& tokens);
     void useDatabase(SessionContext& ctx, std::vector<std::string>& tokens);
     void createTable(SessionContext& ctx, std::vector<std::string>& tokens);
+    void dropDatabase(SessionContext& ctx, std::vector<std::string>& tokens);
 };
 
 
