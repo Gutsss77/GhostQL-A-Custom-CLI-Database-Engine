@@ -59,7 +59,7 @@ SHOW TABLES
 ### 5. Drop Commad
 To delete a database, use the command:
 ```bash
-DROP DATBASE <database_name>
+DROP DATABASE <database_name>
 ```
 This will delete the database folder from the **databases/** directory along with all its contents.
 Warning: This action is irreversible! Make sure you really want to delete the database.
