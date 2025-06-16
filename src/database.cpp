@@ -95,7 +95,7 @@ void Database::showTables(SessionContext& ctx, std::vector<std::string>& tokens)
 //deletes database 
 void Database::dropDatabase(SessionContext& ctx, std::vector<std::string>& tokens){
     if (tokens.size() != 3) {
-        std::cerr << "ERROR: Invalid DROP DATABASE command. Usage: DROP <databasename>\n";
+        std::cerr << " ERROR: Invalid DROP DATABASE command. Usage: DROP <database_name>\n";
         return;
     }
 
@@ -154,8 +154,14 @@ void Database::createTable(SessionContext& ctx, std::vector<std::string>& tokens
     fs::path metadataPath = dbPath / "metadata";
     fs::path dataPath = dbPath / "data";
 
-    fs::create_directories(metadataPath);
-    fs::create_directories(dataPath);
+        if (!fs::exists(metadataPath)) {
+        fs::create_directories(metadataPath);
+    }
+
+    if (!fs::exists(dataPath)) {
+        fs::create_directories(dataPath);
+    }
+
 
     QLParser qlp;
     json schema = qlp.extractMetadataForTable(tokens);
@@ -186,4 +192,52 @@ void Database::createTable(SessionContext& ctx, std::vector<std::string>& tokens
 
     std::cout << " Table '" << tableName << "' created successfully.\n";
 
+}
+
+void Database::dropTable(SessionContext& ctx, std::vector<std::string>& tokens){
+    if(ctx.activeDatabase == ""){
+        std::cerr << " ERROR : No database is selected.\n";
+        return;
+    }
+    if(tokens.size() != 3){
+        std::cerr << " ERROR: Invalid DROP TABLE command. Usage: DROP TABLE <table_name>\n";
+        return;
+    }
+
+    std::string db = ctx.activeDatabase;
+    std::string tableName = tokens[2];
+    fs::path dbName = ctx.rootPath / storageName / db;
+    //for meta data
+    fs::path tableMeta = ctx.rootPath / storageName / db / "metadata" / (tableName + ".meta");
+    //for table data
+    fs::path tableData = ctx.rootPath / storageName / db / "data" / (tableName + ".data");
+
+    try{
+        if(fs::exists(dbName)){
+            bool removedMeta = false;
+            bool removedData = false;
+
+            if (fs::exists(tableMeta)){
+                fs::remove(tableMeta);
+                removedMeta = true;
+            }
+
+            if (fs::exists(tableData)){
+                fs::remove(tableData);
+                removedData = true;
+            }
+
+            if (removedMeta || removedData){
+                std::cout << " Table " << tableName << " dropped successfully.\n";
+            } else {
+                std::cerr << " ERROR : Table " << tableName << " does not exist in database.\n";
+            }
+
+        }else{
+            std::cerr << " ERROR : Database does not exist.\n";
+            return;
+        }
+    }catch(const fs::filesystem_error& e){
+        std::cerr << " Filesystem error: " << e.what() << "\n";
+    }
 }
