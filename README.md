@@ -86,4 +86,3 @@ make
 ```bash
 ./GhostQL
 ```
-You're now ready to use GhostQL via the command line!
