@@ -23,7 +23,7 @@ void process(SessionContext& ctx, const std::string& input) {
     processCommand(ctx, tokens);
 }
 
-// Function to process parsed commands
+// Function to process commands
 void processCommand(SessionContext& ctx, std::vector<std::string>& tokens) {
     if (tokens.empty()) {
         std::cerr << " ERROR : Empty command.\n";
@@ -97,6 +97,7 @@ void processCommand(SessionContext& ctx, std::vector<std::string>& tokens) {
             db.dropDatabase(ctx, tokens);
             return;
         }else if(commandFunction == "TABLE"){
+            db.dropTable(ctx, tokens);
             return;
         }else{
             std::cerr << " ERROR : Invalid command.\n";
