@@ -64,6 +64,17 @@ DROP DATBASE <database_name>
 This will delete the database folder from the **databases/** directory along with all its contents.
 Warning: This action is irreversible! Make sure you really want to delete the database.
 
+To delete a table, you must first select the database that contains it.
+Use the following command to select a database:
+```bash
+USE <database_name>
+```
+Then use:
+```bash
+DROP TABLE <table_name>
+```
+This will delete the table's metadata and data files from the selected database.
+
 More features and commands will be added soon!
 
 ### How to run the project 
