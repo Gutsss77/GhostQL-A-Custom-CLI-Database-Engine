@@ -9,10 +9,12 @@
 using json = nlohmann::ordered_json;
 namespace fs = std::filesystem;
 
-//helper for checking condition and statements
-class Helper{
+//function helper
+class Helper {
 public:
     std::vector<std::string> jsonColumnTokens(json schema, fs::path table);
+    std::vector<std::string> columnNamesFromQuery(std::vector<std::string>& tokens);
+    std::vector<std::vector<std::string>> valuesFromQuery(std::vector<std::string>& tokens);
 };
 
-#endif //HELPER_H
+#endif // HELPER_H
