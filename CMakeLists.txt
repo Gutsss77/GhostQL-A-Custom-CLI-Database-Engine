@@ -12,6 +12,7 @@ add_executable(GhostQL
     src/QLParser.cpp
     src/processCommand.cpp
     src/database.cpp
+    src/helper.cpp
 )
 
 #for using the root directory
