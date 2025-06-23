@@ -6,7 +6,7 @@
 
 using json = nlohmann::ordered_json;
 namespace fs = std::filesystem;
-QLParser qlp;
+QLParser q;
 
 std::vector<std::string> Helper::jsonColumnTokens(json schema, fs::path table) {
     std::vector<std::string> newTokens;
@@ -45,7 +45,7 @@ std::vector<std::vector<std::string>> Helper::valuesFromQuery(std::vector<std::s
     std::vector<std::vector<std::string>> valuesSet;
     int n = tokens.size();
     int i = 0;
-    while(i < n && qlp.toUpperCase(tokens[i]) != "VALUES"){
+    while(i < n && q.toUpperCase(tokens[i]) != "VALUES"){
         i++;
     }
 
