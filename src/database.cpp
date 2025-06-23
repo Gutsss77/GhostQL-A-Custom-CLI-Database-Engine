@@ -1,16 +1,20 @@
 #include "database.hpp"
 #include "QLParser.hpp"
 #include "session.hpp"
+#include "columnMeta.hpp"
+#include "helper.hpp"
 #include "json.hpp"
 #include <vector>
 #include <iostream>
 #include <string>
 #include <filesystem>
+#include <sstream>
 #include <fstream>
 
 namespace fs = std::filesystem;
 std::string storageName = "databases"; //name of folder which stores the databases of user
 using json = nlohmann::ordered_json;
+Helper hp;
 
 //creates a folder for users database
 void Database::createDatabase(SessionContext& ctx, std::vector<std::string>& tokens) {
@@ -57,7 +61,11 @@ void Database::showDatabases(SessionContext& ctx, std::vector<std::string>& toke
                 row++;
             }
         }
-        std::cout << row << "\n rows in set." << "\n";
+        if(row == 1){
+            std::cout << row << " row in set." << "\n";
+        }else{
+            std::cout << row << " rows in set." << "\n";
+        }
     }catch(const std::exception& e){
         std::cerr << " ERROR : while traversing the directory. " << e.what() << "\n";
     }
@@ -67,8 +75,8 @@ void Database::showTables(SessionContext& ctx, std::vector<std::string>& tokens)
     if(tokens.size() < 2){
         std::cerr << " ERROR : Invalid Command.\n";
     }
-    if(ctx.activeDatabase == ""){
-        std::cerr << " ERROR : No database is selected.\n";
+    if(ctx.activeDatabase.empty()){
+        std::cout << " ERROR : No database is selected for performing operations.\n";
         return;
     }
     fs::path db = ctx.rootPath / storageName / ctx.activeDatabase / "metadata";
@@ -85,7 +93,11 @@ void Database::showTables(SessionContext& ctx, std::vector<std::string>& tokens)
                 row++;
             }
         }
-        std::cout << row << "\n rows in set." << "\n";
+        if(row == 1){
+            std::cout << row << " row in set." << "\n";
+        }else{
+            std::cout << row << " rows in set." << "\n";
+        }
     }catch(const std::exception& e){
         std::cerr << " ERROR : while traversing the directory. " << e.what() << "\n";
     }
@@ -141,9 +153,9 @@ void Database::useDatabase(SessionContext& ctx, std::vector<std::string>& tokens
     }
 }
 
-//creates a folder for table schema inside active database the structure is already defined (check readme.md 2. Create tables)
+//creates a folder for table schema inside active database the structure is already defined (check readme.md to Create tables)
 void Database::createTable(SessionContext& ctx, std::vector<std::string>& tokens){
-    if(ctx.activeDatabase == ""){
+    if(ctx.activeDatabase.empty()){
         std::cout << " ERROR : No database is selected for performing operations.\n";
         return;
     }
@@ -194,9 +206,49 @@ void Database::createTable(SessionContext& ctx, std::vector<std::string>& tokens
 
 }
 
+//insert the data into .data file of the table
+void Database::insertIntoTable(SessionContext& ctx, std::vector<std::string>& tokens){
+    if(tokens.size() < 6){
+        std::cerr << " ERROR : Invalid Command.\n";
+        return;
+    }
+    if(ctx.activeDatabase.empty()){
+        std::cout << " ERROR : No database is selected for performing operations.\n";
+        return;
+    }
+    std::string tableName = tokens[2];
+    fs::path tablePath = ctx.rootPath / storageName /ctx.activeDatabase / "metadata" / (tableName + ".meta");
+
+    if(!fs::exists(tablePath)){
+        std::cerr << " ERROR : No table exists.\n";
+        return;
+    }
+
+    //compares the tokens of query and stored json to validate the column names
+    std::vector<std::string> t1 = hp.columnNamesFromQuery(tokens);
+
+    std::ifstream inFile(tablePath);
+    std::ostringstream buffer;
+    buffer << inFile.rdbuf();
+    std::string input = buffer.str();
+
+    try{
+        json meta = json::parse(input);
+        std::vector<std::string> t2 = hp.jsonColumnTokens(meta, tablePath);
+        if (t1 != t2) {
+            std::cerr << " ERROR : Column mismatch in insert statement.\n";
+        return;
+    }
+    }catch(const std::exception& e){
+        std::cerr << " ERROR : " << e.what() << "\n";
+    }
+    std::vector<std::vector<std::string>> valueSet = hp.valuesFromQuery(tokens);
+    
+}
+
 void Database::dropTable(SessionContext& ctx, std::vector<std::string>& tokens){
-    if(ctx.activeDatabase == ""){
-        std::cerr << " ERROR : No database is selected.\n";
+    if(ctx.activeDatabase.empty()){
+        std::cout << " ERROR : No database is selected for performing operations.\n";
         return;
     }
     if(tokens.size() != 3){
