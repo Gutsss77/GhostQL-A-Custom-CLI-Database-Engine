@@ -153,10 +153,48 @@ void Database::useDatabase(SessionContext& ctx, std::vector<std::string>& tokens
     }
 }
 
+void Database::describeTable(SessionContext& ctx, std::vector<std::string>& tokens) {
+    if (ctx.activeDatabase.empty()) {
+        std::cerr << "ERROR: No database is selected for performing operations.\n";
+        return;
+    }
+
+    if (tokens.size() != 2) {
+        std::cerr << "ERROR: Invalid command syntax. Usage: DESCRIBE <table_name>\n";
+        return;
+    }
+
+    std::string tableName = tokens[1];
+    fs::path tablePath = ctx.rootPath / storageName / ctx.activeDatabase / "metadata" / (tableName + ".meta");
+
+    if (!fs::exists(tablePath)) {
+        std::cerr << "ERROR: No table named '" << tableName << "' found in database '" << ctx.activeDatabase << "'.\n";
+        return;
+    }
+
+    std::ifstream infile(tablePath);
+    std::ostringstream buffer;
+    buffer << infile.rdbuf();
+    std::string input = buffer.str();
+
+    try {
+        json schema = json::parse(input);
+        std::vector<std::vector<std::string>> schemaData = hp.schemaOfTable(schema);
+
+        std::cout << "\n Table '" << tableName << "' schema:\n";
+        for (const auto& column : schemaData) {
+            std::cout << column[0] << " " << column[1] << "\n";
+        }
+    } catch (const std::exception& e) {
+        std::cerr << "ERROR: Failed to parse table schema. Details: " << e.what() << "\n";
+    }
+}
+
+
 //creates a folder for table schema inside active database the structure is already defined (check readme.md to Create tables)
 void Database::createTable(SessionContext& ctx, std::vector<std::string>& tokens){
     if(ctx.activeDatabase.empty()){
-        std::cout << " ERROR : No database is selected for performing operations.\n";
+        std::cerr << " ERROR : No database is selected for performing operations.\n";
         return;
     }
     std::string db = ctx.activeDatabase;
@@ -166,7 +204,7 @@ void Database::createTable(SessionContext& ctx, std::vector<std::string>& tokens
     fs::path metadataPath = dbPath / "metadata";
     fs::path dataPath = dbPath / "data";
 
-        if (!fs::exists(metadataPath)) {
+    if (!fs::exists(metadataPath)){
         fs::create_directories(metadataPath);
     }
 
