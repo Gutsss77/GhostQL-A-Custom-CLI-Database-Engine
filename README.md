@@ -75,6 +75,13 @@ DROP TABLE <table_name>
 ```
 This will delete the table's metadata and data files from the selected database.
 
+### 6. Describe command
+To see the defined table schema for already existing table, use the command:
+```bash
+DESCRIBE <table_name>
+```
+This fill fetch the schema data of table showing column name and there type.
+
 More features and commands will be added soon!
 
 ### How to run the project 
