@@ -105,5 +105,28 @@ void processCommand(SessionContext& ctx, std::vector<std::string>& tokens) {
         }
     }
 
+    if(commandType == "INSERT"){
+        if(tokens.size() < 6){
+            std::cerr << " ERROR : Invalid INSERT command. Usage : INSERT INTO <tablename> (column name ..) VALUES (data ..)\n";
+            return;
+        }
+        db.insertIntoTable(ctx, tokens);
+        return;
+    }
+
+    if(commandType == "DESCRIBE"){
+        if(tokens.size() > 3){
+            std::cerr << " ERROR : Invalid DESCRIBE command. Usage : DESCRIBE <tablename> | DESCRIBE DATABASE <databasename>\n";
+            return;
+        }
+        std::string commandFunction = tokens[1];
+        if(commandFunction == "DATABASE"){
+            return;
+        }else{
+            db.describeTable(ctx, tokens);
+            return;
+        }
+    }
+
     std::cerr << " ERROR : Unsupported or unknown command.\n";
 }
