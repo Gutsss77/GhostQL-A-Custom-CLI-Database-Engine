@@ -80,3 +80,17 @@ std::vector<std::vector<std::string>> Helper::valuesFromQuery(std::vector<std::s
     }
     return valuesSet;
 }
+
+std::vector<std::vector<std::string>> Helper::schemaOfTable(json &schema){
+    std::vector<std::vector<std::string>> result;
+    if(schema.contains("metaData") && schema["metaData"].is_array()){
+        for(const auto& column : schema["metaData"]){
+            if(column.contains("column_name") && column.contains("type")){
+                std::string columnName = column["column_name"];
+                std::string columnType = column["type"];
+                result.push_back({columnName, columnType});
+            }
+        }
+    }
+    return result;
+}
