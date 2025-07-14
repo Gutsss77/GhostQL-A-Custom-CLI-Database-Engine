@@ -41,46 +41,54 @@ std::vector<std::string> Helper::columnNamesFromQuery(std::vector<std::string>& 
     return newTokens;
 }
 
-std::vector<std::vector<std::string>> Helper::valuesFromQuery(std::vector<std::string>& tokens){
-    //It cleans the data as well
+std::vector<std::vector<std::string>> Helper::valuesFromQuery(std::vector<std::string>& tokens) {
     std::vector<std::vector<std::string>> valuesSet;
     int n = tokens.size();
     int i = 0;
-    while(i < n && q.toUpperCase(tokens[i]) != "VALUES"){
-        i++;
+    // Find the "VALUES" keyword
+    while (i < n && q.toUpperCase(tokens[i]) != "VALUES") {
+        ++i;
     }
-
-    if(i == n){
+    if (i == n) {
         std::cerr << " ERROR : 'VALUES' keyword not found.\n";
         return valuesSet;
     }
-
-    i++; //moves to next token after VALUES
-    while(i < n){
-        if(tokens[i] == "("){
+    ++i; // Move past 'VALUES'
+    while (i < n) {
+        if (tokens[i] == "(") {
             std::vector<std::string> rowData;
-            i++; // move after the '('
-            while(i < n && tokens[i] != ")"){
-                if(tokens[i] != ","){
+            ++i; // Move inside '('
+
+            while (i < n && tokens[i] != ")") {
+                if (tokens[i] != ",") {
                     std::string val = tokens[i];
-                        //removes quotes from strings like ('Ghost') to (Ghost)
-                    if(!val.empty() && val.front() == '\'' && val.back() == '\''){
-                        val = val.substr(1, val.size() - 2);
+
+                    // Strip surrounding single or double quotes if present
+                    if (!val.empty()) {
+                        char first = val.front();
+                        char last = val.back();
+                        if ((first == '\'' && last == '\'') || (first == '"' && last == '"')) {
+                            if (val.size() >= 2) {
+                                val = val.substr(1, val.size() - 2);
+                            }
+                        }
                     }
                     rowData.push_back(val);
                 }
-                i++;
+                ++i;
             }
-            if(i == n || tokens[i] != ")"){
+
+            if (i == n || tokens[i] != ")") {
                 std::cerr << " ERROR: Missing closing ')' in VALUES clause.\n";
                 return valuesSet;
             }
             valuesSet.push_back(rowData);
         }
-        i++;
+        ++i;
     }
     return valuesSet;
 }
+
 
 std::vector<std::vector<std::string>> Helper::schemaOfTable(json &schema){
     std::vector<std::vector<std::string>> result;
@@ -96,7 +104,8 @@ std::vector<std::vector<std::string>> Helper::schemaOfTable(json &schema){
     return result;
 }
 
-bool Helper::validateDatatype(const std::string& val, const std::string& type){
+bool Helper::validateDatatype(const std::string& val, const std::string& dataType){
+    std::string type = q.toUpperCase(dataType);
     try{
         if(type == "INT"){
             std::stoi(val);
@@ -108,7 +117,7 @@ bool Helper::validateDatatype(const std::string& val, const std::string& type){
             return val == "0" || val == "1" || val == "true" || val == "false";
         }else{
             std::cerr << " ERROR : Unsupported data type '" << type << "'\n";
-            return;
+            return false;
         }
     }catch(...){
         return false;
