@@ -42,6 +42,7 @@ std::vector<std::string> Helper::columnNamesFromQuery(std::vector<std::string>& 
 }
 
 std::vector<std::vector<std::string>> Helper::valuesFromQuery(std::vector<std::string>& tokens){
+    //It cleans the data as well
     std::vector<std::vector<std::string>> valuesSet;
     int n = tokens.size();
     int i = 0;
@@ -93,4 +94,24 @@ std::vector<std::vector<std::string>> Helper::schemaOfTable(json &schema){
         }
     }
     return result;
+}
+
+bool Helper::validateDatatype(const std::string& val, const std::string& type){
+    try{
+        if(type == "INT"){
+            std::stoi(val);
+        }else if(type == "FLOAT"){
+            std::stof(val);
+        }else if(type == "STRING"){
+            return !val.empty();
+        }else if(type == "BOOL"){
+            return val == "0" || val == "1" || val == "true" || val == "false";
+        }else{
+            std::cerr << " ERROR : Unsupported data type '" << type << "'\n";
+            return;
+        }
+    }catch(...){
+        return false;
+    }
+    return true;
 }
