@@ -16,6 +16,7 @@ public:
     std::vector<std::string> columnNamesFromQuery(std::vector<std::string>& tokens);
     std::vector<std::vector<std::string>> valuesFromQuery(std::vector<std::string>& tokens);
     std::vector<std::vector<std::string>> schemaOfTable(json &schema);
+    bool validateDatatype(const std::string& val, const std::string& type);
 };
 
 #endif // HELPER_H
