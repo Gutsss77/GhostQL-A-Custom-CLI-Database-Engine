@@ -1,5 +1,6 @@
 #include "QLParser.hpp"
 #include "database.hpp"
+#include "columnMeta.hpp"
 #include "json.hpp"
 #include <iostream>
 #include <algorithm>
@@ -64,8 +65,8 @@ std::vector<std::string> QLParser::tokenizer(const std::string& s) {
 json QLParser::extractMetadataForTable(std::vector<std::string>& tokens){
     std::string tableName = tokens[2];
     int n = tokens.size();
-    int start = 0;
-    int end = 0;
+    int start = -1;
+    int end = -1;
 
     for(int i = 0; i < n; i++){
         if(tokens[i] == "("){
@@ -78,6 +79,10 @@ json QLParser::extractMetadataForTable(std::vector<std::string>& tokens){
     }
 
     json schema;
+    if(start == -1 || end == -1){
+        std::cerr << " ERROR : No Metadata is defined for table.\n";
+        return schema;
+    } 
     schema["tableName"] = tableName;
     schema["metaData"] = json::array();
 
@@ -85,4 +90,15 @@ json QLParser::extractMetadataForTable(std::vector<std::string>& tokens){
         schema["metaData"].push_back({ {"column_name", tokens[i]}, {"type", tokens[i + 1]} });
     }
     return schema;
+}
+
+std::vector<ColumnMeta> QLParser::extracTableMetaForInsert(std::vector<std::string>& tokens){
+    std::vector<ColumnMeta> metadata;
+    std::string tableName = tokens[2];
+    ColumnMeta d1;
+    d1.name = tableName;
+    d1.type = "tableName"; //first entry is table name
+    metadata.push_back(d1);
+
+    return metadata;
 }

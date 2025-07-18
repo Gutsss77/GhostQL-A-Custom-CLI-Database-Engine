@@ -119,10 +119,10 @@ void processCommand(SessionContext& ctx, std::vector<std::string>& tokens) {
             std::cerr << " ERROR : Invalid DESCRIBE command. Usage : DESCRIBE <tablename> | DESCRIBE DATABASE <databasename>\n";
             return;
         }
-        std::string commandFunction = tokens[1];
+        std::string commandFunction = qlp.toUpperCase(tokens[1]);
         if(commandFunction == "DATABASE"){
             return;
-        }else{
+        }else if(commandFunction == "TABLE"){
             db.describeTable(ctx, tokens);
             return;
         }
