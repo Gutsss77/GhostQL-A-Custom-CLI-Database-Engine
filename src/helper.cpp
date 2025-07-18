@@ -112,7 +112,8 @@ bool Helper::validateDatatype(const std::string& val, const std::string& dataTyp
         }else if(type == "FLOAT"){
             std::stof(val);
         }else if(type == "STRING"){
-            return !val.empty();
+            // return !val.empty();
+            return std::any_of(val.begin(), val.end(), ::isalpha);
         }else if(type == "BOOL"){
             return val == "0" || val == "1" || val == "true" || val == "false";
         }else{
