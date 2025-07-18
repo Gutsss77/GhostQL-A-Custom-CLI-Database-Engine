@@ -159,12 +159,12 @@ void Database::describeTable(SessionContext& ctx, std::vector<std::string>& toke
         return;
     }
 
-    if (tokens.size() != 2) {
-        std::cerr << "ERROR: Invalid command syntax. Usage: DESCRIBE <table_name>\n";
+    if (tokens.size() != 3) {
+        std::cerr << "ERROR: Invalid command syntax. Usage: DESCRIBE TABLE <table_name>\n";
         return;
     }
 
-    std::string tableName = tokens[1];
+    std::string tableName = tokens[2];
     fs::path tablePath = ctx.rootPath / storageName / ctx.activeDatabase / "metadata" / (tableName + ".meta");
 
     if (!fs::exists(tablePath)) {
@@ -183,7 +183,7 @@ void Database::describeTable(SessionContext& ctx, std::vector<std::string>& toke
 
         std::cout << "\n Table '" << tableName << "' schema:\n";
         for (const auto& column : schemaData) {
-            std::cout << column[0] << " " << column[1] << "\n";
+            std::cout << "  - " << column[0] << " " << column[1] << "\n";
         }
     } catch (const std::exception& e) {
         std::cerr << "ERROR: Failed to parse table schema. Details: " << e.what() << "\n";
@@ -233,7 +233,7 @@ void Database::createTable(SessionContext& ctx, std::vector<std::string>& tokens
 
     // Place an empty data array into tableName.data
     std::ofstream outData(dataFile);
-    outData << "[]";
+    // outData << "[]";
     outData.close();
 
     } catch (const std::exception& e) {
@@ -262,25 +262,62 @@ void Database::insertIntoTable(SessionContext& ctx, std::vector<std::string>& to
         return;
     }
 
-    //compares the tokens of query and stored json to validate the column names
-    std::vector<std::string> t1 = hp.columnNamesFromQuery(tokens);
-
     std::ifstream inFile(tablePath);
     std::ostringstream buffer;
     buffer << inFile.rdbuf();
     std::string input = buffer.str();
 
+    json meta;
     try{
-        json meta = json::parse(input);
-        std::vector<std::string> t2 = hp.jsonColumnTokens(meta, tablePath);
-        if (t1 != t2) {
-            std::cerr << " ERROR : Column mismatch in insert statement.\n";
+        meta = json::parse(input);
+    }catch(const std::exception& e){
+        std::cerr << " ERROR : Failed to parse metadata" << e.what() << "\n";
+    }
+
+    //compares the tokens of query and stored json to validate the column names
+    std::vector<std::string> queryColumn = hp.columnNamesFromQuery(tokens);
+    std::vector<std::string> schemaColumn = hp.jsonColumnTokens(meta, tablePath);
+    if (queryColumn != schemaColumn) {
+        std::cerr << " ERROR : Column mismatch in insert statement.\n";
         return;
     }
-    }catch(const std::exception& e){
-        std::cerr << " ERROR : " << e.what() << "\n";
+
+    std::vector<std::vector<std::string>> valueSet = hp.valuesFromQuery(tokens); //values are collected from tokens in 2d vector (because multiple data can be there)
+    std::vector<std::vector<std::string>> schema = hp.schemaOfTable(meta); //schema of table is extracted in 2d vector from .meta file of table
+
+    for(auto &row : valueSet){
+        if(row.size() != schema.size()){ //if the number of row values is equal to no of column in schema
+            std::cerr << " ERROR : Value count mismatch.\n";
+            return;
+        }
+
+        for(size_t i = 0; i < row.size(); i++){
+            const std::string& type = schema[i][1]; //picks the datatype from schema
+            const std::string& val = row[i]; //picks data one by one from row of valueset
+
+            if(!hp.validateDatatype(val, type)){
+                std::cerr << " ERROR : Type mismatch for value '" << val << "' with expected type '" << type << "'.\n";
+                return;
+            }
+        }
     }
-    std::vector<std::vector<std::string>> valueSet = hp.valuesFromQuery(tokens);
+
+    fs::path dataPath = ctx.rootPath / storageName / ctx.activeDatabase / "data" / (tableName + ".data");
+    std::ofstream outFile(dataPath, std::ios::app);
+    if(!outFile){
+        std::cerr << " ERROR : Failed to open data file.\n";
+        return;
+    }
+    for (const auto& row : valueSet) {
+        for (size_t i = 0; i < row.size(); ++i) {
+            outFile << row[i];
+            if (i != row.size() - 1)
+                outFile << ",";
+        }
+        outFile << "\n";
+    }
+
+    std::cout << " SUCCESS : Data inserted into table '" << tableName << "'.\n";
     
 }
 
